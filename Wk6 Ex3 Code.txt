@@ -1,0 +1,86 @@
+///colour variables
+let c1 = 78
+let c2 = 50
+let c3 = 168
+let NM1 = 0.5
+let NM2 = 0.5
+let NM3 = 0.5
+
+///movement variables
+let ShX = -20;
+let ShY = -20;
+let dir1 = 20;
+let dirdown = 20;
+
+///posTracker
+let AbsShX = ShX
+let AbsShY = ShY
+
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+
+}
+
+function draw() {
+  
+///Grid
+  stroke(0, 0, 0)
+    strokeWeight(1)
+  noFill()
+  for(let row = 0; row <= width; row++)
+    {for(let col = 0; col <= height; col++)
+      {let x = row*20;
+       let y = col*20;
+         rect(x,y,width,height);}}
+
+  ///Noise configs for colours!!
+let N1 = map(noise(NM1),0,1,0,256)
+let N2 = map(noise(NM2),0,1,0,256)
+let N3 = map(noise(NM3),0,1,0,256)  
+  
+  ///Shuttle
+push()
+  translate(ShX,ShY)
+  stroke(c1,c2,c3)
+  fill(c1,c2,c3)
+  rect(0,0,20,20)
+pop()
+
+
+  
+///Pattern
+if (ShX==40){c1 = N1*2;c2 = 128;c3 = 256}
+  else if (ShX==60){c1 = N1*2;c2 = 128;c3 = 256}
+   else if (ShX==80){c1 = N1*2;c2 = 128;c3 = 256}
+   else if (ShX==160){c1 = 128;c2 = 256;c3 = N2*2}
+   else if (ShX==180){c1 = 128;c2 = 256;c3 = N2*2}
+   else if (ShX==200){c1 = 128;c2 = 256;c3 = N2*2}
+   else if (ShX==280){c1 = 256;c2 = N3*2;c3 = 128}
+   else if (ShX==300){c1 = 256;c2 = N3*2;c3 = 128}
+   else if (ShX==320){c1 = 256;c2 = N3*2;c3 = 128}
+
+  
+    else {c1 = N3*2;c2 = 64;c3 = 64}
+  
+
+  
+  
+  
+///Movement Bullshit
+if(ShX>380){ShY+=dirdown}
+if(ShX>380){dir1= -20}
+
+if(ShX<0){ShY+=dirdown}
+if(ShX<0){dir1=20}
+  
+///Increments
+  ShX += dir1
+  NM1 += 0.1
+  NM2 += 0.1
+  NM3 += 0.1
+  
+///noLoop()
+
+}
+

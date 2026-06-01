@@ -1,0 +1,50 @@
+let dropX = 0
+let dropY = 0
+let dropY2 = 0
+let dir = 0
+let hordir = 3
+let hordir2 = 6
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(0);
+///ladder scrolling down page, shooting star in bg, green circle below
+///star
+  stroke(255, 255, 0)
+  fill(255, 255, 0)
+ellipse(dropX,dropY2,20)
+  fill(255, 255, 153)
+  ellipse(dropX,dropY2-20,8,30)
+///ground below
+  stroke(0, 204, 0)
+  fill(0, 204, 0)
+ellipse(200,height,500,200)
+///ladder
+  stroke(153, 51, 0)
+  fill(153, 51, 0)
+  rect(190,dropY-100,120,30)
+  rect(190,dropY-200,120,30)
+  rect(190,dropY-300,120,30)
+  rect(190,dropY-400,120,30)
+  rect(190,dropY-500,120,30)
+rect(190,dropY,120,30)
+  rect(190,dropY+100,120,30)
+  rect(190,dropY+200,120,30)
+  rect(190,dropY+300,120,30)
+rect(170,0,30,400)
+  rect(310,0,30,400)
+///movement variables and increments
+  dropY = dropY + hordir
+  dropX = dropX + dir
+  dropY2 = dropY2 + hordir2
+  if(dropY>=height+80){dropX=random(190)}
+  if(dropY>=height+80){dropY=0}
+  if(dropY2>=height+80){dropY2=0}
+///
+}
+/// Save a 5-second gif when the user presses the 's' key.
+function keyPressed() {
+  if (key === 's') {
+    saveGif('mySketch', 5);}}
