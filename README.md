@@ -1,4 +1,3 @@
-# creative-coding-template
 SELECTION #1
 p5.js - Week #6 Exercise #3
 
